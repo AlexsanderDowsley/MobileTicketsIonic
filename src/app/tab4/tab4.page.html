@@ -1,0 +1,154 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Relatórios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-button expand="block" color="danger" (click)="encerrarExpediente()">
+
+    Encerrar Expediente
+
+  </ion-button>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumo Geral</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Total Emitidas: {{ totalEmitidas }}</p>
+      <p>Total Atendidas: {{ totalAtendidas }}</p>
+      <p>Total Descartadas: {{ totalDescartadas }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Emitidas por Tipo</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>SP: {{ spEmitidas }}</p>
+      <p>SG: {{ sgEmitidas }}</p>
+      <p>SE: {{ seEmitidas }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Atendidas por Tipo</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>SP: {{ spAtendidas }}</p>
+      <p>SG: {{ sgAtendidas }}</p>
+      <p>SE: {{ seAtendidas }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tempo Médio (TM)</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>TM SP: {{ tmSP }} min</p>
+      <p>TM SG: {{ tmSG }} min</p>
+      <p>TM SE: {{ tmSE }} min</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>
+        Relatório Diário
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <p>Emitidas Hoje: {{ emitidasHoje }}</p>
+
+      <p>Atendidas Hoje: {{ atendidasHoje }}</p>
+
+      <p>Descartadas Hoje: {{ descartadasHoje }}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>
+        Relatório Mensal
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <p>Emitidas no Mês: {{ emitidasMes }}</p>
+
+      <p>Atendidas no Mês: {{ atendidasMes }}</p>
+
+      <p>Descartadas no Mês: {{ descartadasMes }}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>
+        Relatório Detalhado
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list>
+
+        <ion-item *ngFor="let ticket of todasSenhas">
+
+          <ion-label>
+
+            <h2>{{ ticket.numero }}</h2>
+
+            <p>Tipo: {{ ticket.tipo }}</p>
+
+            <p>
+              Emissão:
+              {{ ticket.dataHoraEmissao | date:'dd/MM/yyyy HH:mm' }}
+            </p>
+
+            <p *ngIf="ticket.atendida">
+              Atendimento:
+              {{ ticket.dataHoraAtendimento | date:'dd/MM/yyyy HH:mm' }}
+            </p>
+
+            <p *ngIf="ticket.atendida">
+              Guichê: {{ ticket.guiche }}
+            </p>
+
+            <p *ngIf="ticket.atendida">
+              TM: {{ ticket.tempoAtendimento }} min
+            </p>
+
+            <p *ngIf="ticket.descartada">
+              Status: DESCARTADA
+            </p>
+
+          </ion-label>
+
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

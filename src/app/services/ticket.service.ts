@@ -1,31 +1,49 @@
 import { Injectable } from '@angular/core';
+import { Ticket } from '../models/ticket';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TicketService {
 
-    filaSP: string[] = [];
-    filaSG: string[] = [];
-    filaSE: string[] = [];
+    filaSP: Ticket[] = [];
+    filaSG: Ticket[] = [];
+    filaSE: Ticket[] = [];
+
+    atendidas: Ticket[] = [];
+    todasSenhas: Ticket[] = [];
+
     historico: string[] = [];
+
     guicheAtual: number = 1;
     ultimaFoiPrioritaria: boolean = false;
 
     constructor() { }
 
-    adicionarSenha(senha: string) {
+    estaNoExpediente(): boolean {
 
-        if (senha.includes('SP')) {
-            this.filaSP.push(senha);
+        const agora = new Date();
+
+        const hora = agora.getHours();
+
+        return hora >= 7 && hora < 17;
+
+    }
+
+    adicionarSenha(ticket: Ticket) {
+
+        this.todasSenhas.push(ticket);
+
+        if (ticket.tipo === 'SP') {
+            this.filaSP.push(ticket);
         }
 
-        else if (senha.includes('SG')) {
-            this.filaSG.push(senha);
+        else if (ticket.tipo === 'SG') {
+            this.filaSG.push(ticket);
         }
 
-        else if (senha.includes('SE')) {
-            this.filaSE.push(senha);
+        else if (ticket.tipo === 'SE') {
+            this.filaSE.push(ticket);
         }
 
     }
@@ -88,5 +106,25 @@ export class TicketService {
 
     listarHistorico() {
         return this.historico;
+    }
+
+    encerrarExpediente() {
+
+        this.filaSP.forEach(ticket => {
+            ticket.descartada = true;
+        });
+
+        this.filaSG.forEach(ticket => {
+            ticket.descartada = true;
+        });
+
+        this.filaSE.forEach(ticket => {
+            ticket.descartada = true;
+        });
+
+        this.filaSP = [];
+        this.filaSG = [];
+        this.filaSE = [];
+
     }
 }
