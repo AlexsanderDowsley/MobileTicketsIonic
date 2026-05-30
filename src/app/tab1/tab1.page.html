@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Sistema de Senhas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Emitir Senha</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-button expand="block" color="danger" (click)="gerarSenha('SP')">
+        Senha Prioritária (SP)
+      </ion-button>
+
+      <ion-button expand="block" color="primary" (click)="gerarSenha('SG')">
+        Senha Geral (SG)
+      </ion-button>
+
+      <ion-button expand="block" color="success" (click)="gerarSenha('SE')">
+        Senha Exames (SE)
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="senhaGerada">
+
+    <ion-card-header>
+      <ion-card-title>Sua Senha</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <h1 style="text-align:center">
+        {{ senhaGerada }}
+      </h1>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

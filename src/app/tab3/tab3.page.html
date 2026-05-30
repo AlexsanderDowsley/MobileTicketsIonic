@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Atendimento
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-button expand="block" color="success" (click)="chamarProximaSenha()">
+
+    Chamar Próxima Senha
+
+  </ion-button>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>
+        Senha Atual
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <h1 style="text-align:center">
+        {{ senhaAtual }}
+      </h1>
+
+      <h2 style="text-align:center" *ngIf="senhaAtual && senhaAtual !== 'Nenhuma senha na fila'">
+
+        Guichê {{ guicheAtual }}
+
+      </h2>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
