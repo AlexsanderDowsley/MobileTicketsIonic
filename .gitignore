@@ -1,17 +1,16 @@
 # Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
 
 *~
 *.sw[mnpcod]
 .tmp
 *.tmp
 *.tmp.*
+
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
 
 *.log
 log.txt
-
 
 /.sourcemaps
 /.versions
@@ -52,15 +51,19 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-
-# Miscellaneous
+# Angular
 /.angular
 /.angular/cache
+
+# Sass
 .sass-cache/
+
+# Nx
 /.nx
 /.nx/cache
+
+# Miscellaneous
 /connect.lock
-/coverage
 /libpeerconnection.log
 testem.log
 /typings
