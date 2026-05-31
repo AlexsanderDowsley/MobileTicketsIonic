@@ -279,10 +279,12 @@ npm install
 ionic serve
 ```
 
-## Autor
+## Equipe
 
 Alexsander Dowsley
-
+Gilvan Marques
+Vinicius José Alves da Silva
+Juan pablo
 ---
 
 ## Licença
