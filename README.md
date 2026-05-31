@@ -282,10 +282,13 @@ ionic serve
 ## Equipe
 
 Alexsander Dowsley
+
 Gilvan Marques
+
 Vinicius José Alves da Silva
+
 Juan pablo
----
+
 
 ## Licença
 
